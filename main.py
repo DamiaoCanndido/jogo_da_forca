@@ -1,3 +1,5 @@
+import random
+
 cabeca =  ' '#'O'
 corpo = ' '#'|'
 braco_esq = ' '#'/'
@@ -11,10 +13,22 @@ vidas = 6
 
 pecados = ['soberba', 'avareza', 'inveja', 'ira', 'luxuria', 'gula', 'preguica']
 
-def sorteio(lista: list[str]):
-    pass
 
-def jogar(letra: str):
-    pass
+def sorteio(lista: list[str]):
+    palavra = random.choice(lista)
+    return palavra
+
+
+def jogar():
+    global vidas
+    palavra = sorteio(pecados)
+    print(palavra)
+    letra = input('Insira uma letra: ')
+    jogada = letra in palavra
+    if not jogada:
+        vidas = vidas - 1
+    print(vidas)   
+
 
 print(forca)
+jogar()
