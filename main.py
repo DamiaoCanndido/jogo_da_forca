@@ -23,11 +23,15 @@ def jogar():
     global vidas
     palavra = sorteio(pecados)
     print(palavra)
-    letra = input('Insira uma letra: ')
-    jogada = letra in palavra
-    if not jogada:
-        vidas = vidas - 1
-    print(vidas)   
+    while vidas != 0:
+        letra = input('Insira uma letra: ')
+        jogada = letra in palavra
+        if not jogada:
+            vidas = vidas - 1
+            print("ERROU!")
+            print(vidas)
+        elif jogada:
+            print("ACERTOU!")   
 
 
 print(forca)
