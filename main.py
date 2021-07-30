@@ -22,16 +22,28 @@ def sorteio(lista: list[str]):
 def jogar():
     global vidas
     palavra = sorteio(pecados)
+    acertos = len(palavra)
     print(palavra)
-    while vidas != 0:
+    while vidas > 0:
         letra = input('Insira uma letra: ')
         jogada = letra in palavra
         if not jogada:
             vidas = vidas - 1
             print("ERROU!")
-            print(vidas)
+            print(f"Vidas: {vidas}")
+            if vidas == 0:
+                print("VOCÊ PERDEU!")
         elif jogada:
-            print("ACERTOU!")   
+            print("ACERTOU!")
+            nova = palavra.replace(letra, '')
+            palavra = nova
+            acertos = len(palavra)
+            if acertos == 0:
+                vidas = 0
+            if acertos == 0:
+                print("VOCÊ GANHOU!")
+            print(acertos)
+            print(palavra)
 
 
 print(forca)
