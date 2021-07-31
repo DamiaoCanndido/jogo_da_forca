@@ -10,7 +10,7 @@ perna_dir = ' '#'\\'
 corpo_comp = ['O', '|', '/', '\\', '/', '\\']
 corpo_inc = [' ', ' ', ' ', ' ', ' ', ' ']
 
-forca = f"########\n##     |\n##     {cabeca}\n##    {braco_esq}{corpo}{braco_dir}\n##     {corpo}\n##    {perna_esq} {perna_dir}\n##"
+forca = f"########\n##     |\n##     {corpo_inc[0]}\n##    {corpo_inc[2]}{corpo_inc[1]}{corpo_inc[3]}\n##     {corpo_inc[1]}\n##    {corpo_inc[4]} {corpo_inc[5]}\n##"
 
 vidas = 6
 
@@ -24,6 +24,7 @@ def sorteio(lista: list[str]):
 
 def jogar():
     global vidas
+    global forca
     palavra = sorteio(pecados)
     acertos = len(palavra)
     print(palavra)
@@ -33,7 +34,10 @@ def jogar():
         if not jogada:
             vidas = vidas - 1
             helper = 5 - vidas
-            
+            print(f"helper: {helper}")
+            corpo_inc[helper] = corpo_comp[helper]
+            print(corpo_inc)
+            forca = f"########\n##     |\n##     {corpo_inc[0]}\n##    {corpo_inc[2]}{corpo_inc[1]}{corpo_inc[3]}\n##     {corpo_inc[1]}\n##    {corpo_inc[4]} {corpo_inc[5]}\n##"
             print("ERROU!")
             print(f"Vidas: {vidas}")
             if vidas == 0:
