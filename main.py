@@ -7,6 +7,9 @@ braco_dir = ' '#'\\'
 perna_esq = ' '#'/'
 perna_dir = ' '#'\\'
 
+corpo_comp = ['O', '|', '/', '\\', '/', '\\']
+corpo_inc = [' ', ' ', ' ', ' ', ' ', ' ']
+
 forca = f"########\n##     |\n##     {cabeca}\n##    {braco_esq}{corpo}{braco_dir}\n##     {corpo}\n##    {perna_esq} {perna_dir}\n##"
 
 vidas = 6
@@ -29,10 +32,13 @@ def jogar():
         jogada = letra in palavra
         if not jogada:
             vidas = vidas - 1
+            helper = 5 - vidas
+            
             print("ERROU!")
             print(f"Vidas: {vidas}")
             if vidas == 0:
                 print("VOCÊ PERDEU!")
+            print(forca)
         elif jogada:
             print("ACERTOU!")
             nova = palavra.replace(letra, '')
@@ -40,11 +46,10 @@ def jogar():
             acertos = len(palavra)
             if acertos == 0:
                 vidas = 0
-            if acertos == 0:
                 print("VOCÊ GANHOU!")
-            print(acertos)
+            print(f"ACERTOS: {acertos}")
             print(palavra)
-
+            print(forca)
 
 print(forca)
 jogar()
